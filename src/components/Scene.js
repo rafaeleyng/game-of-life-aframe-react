@@ -1,24 +1,31 @@
 import React from 'react'
-import Board from './Board'
 import lif from 'lif'
+import Board from './Board'
+import Controls from './Controls'
+
+const initEmptyBoard = (width, height) => {
+  const board = []
+  for (var i = 0; i < width * height; ++i) { board[i] = false }
+  return board
+}
+
+const initRandomBoard = (width, height) => {
+  const board = []
+  for (var i = 0; i < width * height; ++i) { board[i] = Math.random() > 0.7 }
+  return board
+}
 
 export default class Scene extends React.Component {
   constructor() {
     super()
 
-    const width = 10
-    const height = 10
-
-    const initEmptyBoard = (width, height) => {
-      const board = []
-      for (var i = 0; i < width * height; ++i) { board[i] = false }
-      return board
-    }
+    const width = 14
+    const height = 14
 
     const board = initEmptyBoard(width, height)
 
     this.state = {
-      interval: 100,
+      interval: 200,
       width,
       height,
       board,
@@ -30,6 +37,8 @@ export default class Scene extends React.Component {
     this.togglePlay = this.togglePlay.bind(this)
     this.play = this.play.bind(this)
     this.stop = this.stop.bind(this)
+    this.clear = this.clear.bind(this)
+    this.random = this.random.bind(this)
     this.handleCellClick = this.handleCellClick.bind(this)
 
     document.addEventListener('keydown', e => {
@@ -68,6 +77,18 @@ export default class Scene extends React.Component {
     })
   }
 
+  clear() {
+    this.setState({
+      board: initEmptyBoard(this.state.width, this.state.height),
+    })
+  }
+
+  random() {
+    this.setState({
+      board: initRandomBoard(this.state.width, this.state.height),
+    })
+  }
+
   handleCellClick(index) {
     console.log('handleCellClick', index)
     if (this.state.gameState === 'stoped') {
@@ -88,7 +109,8 @@ export default class Scene extends React.Component {
 
     return (
       <a-scene>
-        <Board width={this.state.width} height={this.state.height} board={this.state.board} click={this.handleCellClick}></Board>
+        <Board width={this.state.width} height={this.state.height} board={this.state.board} click={this.handleCellClick} />
+        <Controls isPlaying={this.state.gameState === 'playing'} togglePlay={this.togglePlay} clear={this.clear} random={this.random}/>
         {camera}
       </a-scene>
     )

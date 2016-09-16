@@ -1,11 +1,11 @@
 import React from 'react'
 
 const transformCol = (width, col) => {
-  return (col * 2) - (width)
+  return (col * 1.6) - (width)
 }
 
 const transformRow = (height, row) => {
-  return (row / height) * (height * 2) - (height / 2)
+  return (row / height) * (height * 1.6) - (height / 2)
 }
 
 export default class Cell extends React.Component {

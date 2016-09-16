@@ -108,11 +108,11 @@ export default class Scene extends React.Component {
     )
 
     return (
-      <a-scene>
+      <a-entity>
         <Board width={this.state.width} height={this.state.height} board={this.state.board} click={this.handleCellClick} />
         <Controls isPlaying={this.state.gameState === 'playing'} togglePlay={this.togglePlay} clear={this.clear} random={this.random}/>
         {camera}
-      </a-scene>
+      </a-entity>
     )
   }
 }

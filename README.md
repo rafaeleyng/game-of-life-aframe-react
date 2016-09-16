@@ -1,1 +1,1 @@
-# aframe-starter
+# aframe-react-starter

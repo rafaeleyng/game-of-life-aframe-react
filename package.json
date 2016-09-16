@@ -1,0 +1,45 @@
+{
+  "name": "aframe-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && webpack --colors --webpack_env=prod",
+    "clean": "rimraf ./dist",
+    "deploy": "npm run build && npm run gh-pages",
+    "gh-pages": "gh-pages -d dist",
+    "lint": "esw -w ./src/**/*.js ./src/*.js ./*.js || exit 0",
+    "start": "webpack-dev-server --colors --webpack_env=dev"
+  },
+  "author": "Rafael Eyng <rafaeleyng@gmail.com> (https://github.com/rafaeleyng)",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "6.10.4",
+    "babel-loader": "6.2.4",
+    "babel-preset-es2015": "6.9.0",
+    "babel-preset-react": "6.11.1",
+    "copy-webpack-plugin": "3.0.1",
+    "css-loader": "0.23.1",
+    "eslint": "2.13.1",
+    "eslint-config-airbnb": "9.0.1",
+    "eslint-plugin-import": "1.9.2",
+    "eslint-plugin-jsx-a11y": "1.5.3",
+    "eslint-plugin-react": "5.2.2",
+    "eslint-watch": "2.1.11",
+    "file-loader": "0.9.0",
+    "gh-pages": "0.11.0",
+    "html-loader": "0.4.3",
+    "html-webpack-plugin": "2.21.0",
+    "react-loader": "2.4.0",
+    "style-loader": "0.13.1",
+    "url-loader": "0.5.7",
+    "webpack": "1.13.1",
+    "webpack-dev-server": "1.14.1",
+    "yargs": "4.7.1"
+  },
+  "dependencies": {
+    "aframe": "0.3.0",
+    "react": "15.2.0",
+    "react-dom": "15.2.0"
+  }
+}

@@ -88665,7 +88665,8 @@
 	        null,
 	        _react2.default.createElement(_Board2.default, { width: this.state.width, height: this.state.height, board: this.state.board, click: this.handleCellClick }),
 	        _react2.default.createElement(_Controls2.default, { isPlaying: this.state.gameState === 'playing', togglePlay: this.togglePlay, clear: this.clear, random: this.random }),
-	        camera
+	        camera,
+	        _react2.default.createElement('a-sky', { color: '#DDDDDD' })
 	      );
 	    }
 	  }]);
